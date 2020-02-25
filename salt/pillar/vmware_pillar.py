@@ -391,9 +391,9 @@ def ext_pillar(minion_id,
     if 'property_types' in kwargs:
         for prop_type in kwargs['property_types']:
             if isinstance(prop_type, dict):
-                property_types.append(getattr(vim, list(prop_type.keys())[0]))
-                if isinstance(prop_type[list(prop_type.keys())[0]], list):
-                    pillar_attributes = pillar_attributes + prop_type[list(prop_type.keys())[0]]
+                property_types.append(getattr(vim, next(iter(prop_type.keys()))))
+                if isinstance(prop_type[next(iter(prop_type.keys()))], list):
+                    pillar_attributes = pillar_attributes + prop_type[next(iter(prop_type.keys()))]
                 else:
                     log.warning('A property_type dict was specified, but its value is not a list')
             else:

@@ -114,7 +114,7 @@ def present(name,
         ret['result'] = False
         return ret
     elif len(uuid_dict) == 1:
-        uuid = list(uuid_dict.keys())[0]
+        uuid = next(iter(uuid_dict.keys()))
         if present and present['uuid'] != uuid:
             ret['comment'] = 'Devices MD_UUIDs: {0} differs from present RAID uuid {1}.'.format(uuid, present['uuid'])
             ret['result'] = False

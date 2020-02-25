@@ -484,7 +484,7 @@ def install(name=None,
                     out['stdout'], []
                 )
                 if pkginfo_dict:
-                    to_reinstall.append(list(pkginfo_dict.keys())[0])
+                    to_reinstall.append(next(iter(pkginfo_dict.keys())))
 
     for pkgname in to_reinstall:
         if pkgname not in ret or pkgname in old:
